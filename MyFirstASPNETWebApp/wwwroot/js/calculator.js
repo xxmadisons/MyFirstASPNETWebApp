@@ -1,31 +1,31 @@
-﻿const { btncalc } = require("jquery");
+﻿
 
 
 // function for calculating the grades
-const btncalc = () => {
 
-    // Getting inputs from the user
-    let assignment = $("#assignment").value;
-    let group = $("#group").value;
-    let quiz = $("#quiz").value;
-    let exam = $("#exam").value;
-    let intex = $("#intex").value;
-    let grades = "";
+// Getting inputs from the user
+$("#btncalc").click(function () {
 
-    // Input is string so typecasting is necessary. */
-    let overallgrade =
-        parseFloat(assignment) * .55 +
-        parseFloat(quiz) * .10 +
-        parseFloat(exam) * .20 +
-        parseFloat(intex) * .10 +
-        parseFloat(group) * .05;
+    var overallgrade = (($("#assignment").val() * 55) + ($("#group").val() * .05) + ($("#quiz").val() * .10) + ($("#exam").val() * .20) + ($("#intex").val() * .10))
 
+// Make sure the user inputs value between 0 and 100 */
 
+   
+            
+    if (($('#assignment' > 100 || $('#assignment' < 0)) || ($('#group' > 100 || $('#group' < 0)) || ($('#quiz' > 100 || $('#quiz' < 0)) || ($('#exam' > 100 || $('#exam' < 0)) || ($('#intex' > 100 || $('#intex' < 0))))))))
+    {
+        alert("Enter value from 0 to 100.")
 
+    }
+    else {
+        break;
+    }
+  
 
-    // Checking the condition for the providing the 
-    // grade to student based on percentage
+        // Checking the condition for the providing the 
+        // grade to student based on percentage
     let percentage = (overallgrade / 1.00);
+
     if (percentage <= 100 && percentage >= 94) {
         grades = "A";
     } else if (percentage <= 93 && percentage >= 90) {
@@ -49,30 +49,32 @@ const btncalc = () => {
     } else if (percentage <= 63 && percentage >= 60) {
         grades = "D-";
     } else {
-        grades = "E";
+        grades = "FAIL";
     }
+
+   
+
 
     // Checking the values are empty if empty than
     // show please fill them
     if (assignment == "" || quiz == ""
         || group == "" || exam == "" || intex == "") {
-        $("#showdata").innerHTML
-            = "Please enter all the fields";
-    } else {
-
-            $(
-                "#showdata"
-            ).innerHTML =
-                ` Your grade is ${percentage} 
-        and your letter grade is a(n) ${grades}%. `;
-       
-        
+        alert("Please enter a value for every category.");
     }
+    else {
+        alert(`Your grade is a(n) ${grades}`)
+        $("#demo").innerHTML = `Your total number is ${overallgrade}`;
+        $("#demo2").innerHTML = `Your percentage is ${percentage}`;
+        $("#demo3").innerHTML = `Your ended the class with a(n) ${grades}`;
+
+    }
+
+
+
+});
    
-};
 
-
-
+ 
 
 
 
